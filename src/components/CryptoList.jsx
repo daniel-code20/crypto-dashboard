@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const CryptoList = () => {
+const CryptoList = ({ onSelectCrypto }) => {
   const [cryptos, setCryptos] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -40,6 +40,7 @@ const CryptoList = () => {
         <div
           key={crypto.id}
           className="p-4 bg-white rounded shadow hover:shadow-lg"
+          onClick={() => onSelectCrypto(crypto.id)}
         >
           <h2 className="font-bold text-lg">{crypto.name}</h2>
           <p>Precio: ${crypto.current_price.toLocaleString()}</p>
