@@ -20,7 +20,7 @@ const CryptoList = ({ onSelectCrypto }) => {
         }
 
         // Llamada a la API
-        const response = await axios.get("http://localhost:4000/api/cryptos", {
+        const response = await axios.get('http://localhost:4000/api/cryptos', {
           params: {
             vs_currency: "usd",
             order: "market_cap_desc",
@@ -81,7 +81,7 @@ const CryptoList = ({ onSelectCrypto }) => {
           className="p-4 bg-white rounded shadow hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col items-start"
           onClick={() => handleSelectCrypto(crypto.id)}
         >
-          {/* Logo e Información */}
+
           <div className="flex items-center gap-4 mb-2">
             <img
               src={crypto.image}
@@ -90,7 +90,7 @@ const CryptoList = ({ onSelectCrypto }) => {
             />
             <h2 className="font-bold text-lg">{crypto.name}</h2>
           </div>
-          {/* Detalles */}
+
           <p>Precio: ${crypto.current_price.toLocaleString()}</p>
           <p>Capitalización: ${crypto.market_cap.toLocaleString()}</p>
           <p
