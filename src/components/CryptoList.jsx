@@ -75,36 +75,42 @@ const CryptoList = ({ onSelectCrypto }) => {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      {cryptos.map((crypto) => (
-        <div
-          key={crypto.id}
-          className="p-4 bg-white rounded shadow hover:shadow-lg transition-shadow duration-300 cursor-pointer flex flex-col items-start"
-          onClick={() => handleSelectCrypto(crypto.id)}
-        >
+  {cryptos.map((crypto) => (
+    <div
+      key={crypto.id}
+      className="p-4 bg-white dark:bg-gray-800 rounded shadow-lg dark:
+                 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 
+                 cursor-pointer flex flex-col items-start"
+      onClick={() => handleSelectCrypto(crypto.id)}
+    >
+      <div className="flex items-center gap-4 mb-2">
+        <img
+          src={crypto.image}
+          alt={`${crypto.name} logo`}
+          className="w-10 h-10 rounded-full"
+        />
+        <h2 className="font-bold text-lg text-black dark:text-white">{crypto.name}</h2>
+      </div>
 
-          <div className="flex items-center gap-4 mb-2">
-            <img
-              src={crypto.image}
-              alt={`${crypto.name} logo`}
-              className="w-10 h-10 rounded-full"
-            />
-            <h2 className="font-bold text-lg">{crypto.name}</h2>
-          </div>
-
-          <p>Precio: ${crypto.current_price.toLocaleString()}</p>
-          <p>Capitalización: ${crypto.market_cap.toLocaleString()}</p>
-          <p
-            className={`${
-              crypto.price_change_percentage_24h > 0
-                ? "text-green-500"
-                : "text-red-500"
-            }`}
-          >
-            Cambio 24h: {crypto.price_change_percentage_24h.toFixed(2)}%
-          </p>
-        </div>
-      ))}
+      <p className="text-gray-700 dark:text-gray-300">
+        Precio: ${crypto.current_price.toLocaleString()}
+      </p>
+      <p className="text-gray-700 dark:text-gray-300">
+        Capitalización: ${crypto.market_cap.toLocaleString()}
+      </p>
+      <p
+        className={`font-semibold ${
+          crypto.price_change_percentage_24h > 0
+            ? "text-green-500"
+            : "text-red-500"
+        }`}
+      >
+        Cambio 24h: {crypto.price_change_percentage_24h.toFixed(2)}%
+      </p>
     </div>
+  ))}
+</div>
+
   );
 };
 

@@ -1,9 +1,14 @@
-import './App.css';
-import Dashboard from './pages/Dashboard';
+import "./App.css";
+import Dashboard from "./pages/Dashboard";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   return (
-  <Dashboard/>
+    <ThemeProvider>
+      <div className="bg-white dark:bg-gray-900 min-h-screen text-black dark:text-white">
+        <Dashboard />
+      </div>
+    </ThemeProvider>
   );
 }
 
